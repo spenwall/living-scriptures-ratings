@@ -1,0 +1,1 @@
+# living-scriptures-ratings
