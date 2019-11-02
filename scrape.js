@@ -9,17 +9,21 @@ const scrape = () => {
   const movies = $('.movie-cover')
 
   movieInfo = []
+  movieList = []
   movies.each((i, movie) => {
-    movieInfo.push({
-      title:  $(movie).attr('data-item-title'),
-      kind: $(movie).attr('data-item-kind'),
-      id: $(movie).attr('data-item-id'),
-      duration: $(movie).attr('data-item-duration'),
-      series: $(movies).attr('data-item-series'),
-      description: $(movie).attr('data-item-description'),
-      rating: $(movie).attr('data-item-content-rating'),
-      href: $(movie).attr('data-item-href'),
-    })
+    if (!movieList.includes($(movie).attr('data-item-id'))) {
+      movieInfo.push({
+        title:  $(movie).attr('data-item-title'),
+        kind: $(movie).attr('data-item-kind'),
+        id: $(movie).attr('data-item-id'),
+        duration: $(movie).attr('data-item-duration'),
+        series: $(movies).attr('data-item-series'),
+        description: $(movie).attr('data-item-description'),
+        rating: $(movie).attr('data-item-content-rating'),
+        href: $(movie).attr('data-item-href'),
+      })
+      movieList.push($(movie).attr('data-item-id'))
+    }
   })
 
   movieInfo.forEach((movie) => {
